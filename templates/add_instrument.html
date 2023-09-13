@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+
+{% block body %}
+    <section id="add-student" class="secondary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Add Instrument</h1>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <form action="add_instrument" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div>
+                            <label class="" for="name">Instrument Name :</label>
+                            <input class="form-control" type="text" name="name" id="name">
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <label for="closet">Closet :</label>
+                                <input class="form-control" type="text" name="closet" id="closet">
+                            </div>
+                            <div class="col-6">
+                                <label for="rack">Rack :</label>
+                                <input class="form-control" type="text" name="rack" id="rack">
+                            </div>
+                        </div>
+                        <div class="pb-2">
+                            <label for="department">Department :</label>
+                            <select class="form-select" name="department" id="department">
+                                {% for d in department %}
+                                <option value="{{d.id}}">{{d.name}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div>
+                            <label for="instrumentImage"></label>
+                            <input class="form-control" type="file" name="instrumentImage" id="instrumentImage">
+                        </div>
+                        <div class="mt-3">
+                            <button class="btn btn-primary instrument-btn" type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+{% endblock %}
