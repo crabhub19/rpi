@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+
+{% block body %}
+    <section id="add-instructor" class="secondary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Add Instructor</h1>
+        </div>
+        <div class="container">
+            <form class="row secondary border shadow py-3 instructor-form" action="add_instructor" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-md-6">
+                    <div class="form-group pb-2">
+                        <label for="name">Name :</label>
+                        <input class="form-control" type="text" id="name" name="name" placeholder="what is your name" required>
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="email">E-mail :</label>
+                        <input class="form-control" type="email" id="email" name="email" placeholder="google@gmail.com">
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="tag">Tag :</label>
+                        <input class="form-control" type="text" id="tag" name="tag" placeholder="DUET">
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="address">Address :</label>
+                        <input class="form-control" type="text" id="address" name="address" placeholder="Rajshahi,Bangladesh">
+                    </div>
+                    <div class="form-group pb-2">
+                        <label for="description">Description :</label>
+                        <textarea class="form-control" name="description" id="description" cols="" rows="6" placeholder="You know who I am"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-6 ps-md-5">
+                    <div class="custom-control m-0 pb-2">
+                        <div class="form-check d-inline-block">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check d-inline-block">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                    </div>
+                    <div class="pb-2">
+                        <label for="department">Department :</label>
+                        <select class="form-select" name="department" id="department">
+                            {% for d in department %}
+                            <option value="{{d.id}}">{{d.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="pb-2">
+                        <label for="rank">Rank :</label>
+                        <select class="form-select" name="rank" id="rank">
+                            <option value="chifInstructor">Chif Instructor</option>
+                            <option value="instructor">Instructor</option>
+                            <option value="juniorInstractor">Junior Instractor</option>
+                            <option value="assistantInstructor">Assistant Instructor</option>
+                            <option value="guestInstructor">Guest Instructor</option>
+                        </select>
+                    </div>
+                    <div class="pb-2">
+                        <label for="shift">Shift :</label>
+                        <div class="form-switch">
+                            <input id="firstShift" name="firstShift" type="checkbox" class="form-check-input">
+                            <label class="form-check-label" for="firstShift">1st</label>
+                        </div>
+                        <div class="form-switch">
+                            <input id="secondShift" name="secondShift" type="checkbox" class="form-check-input">
+                            <label class="form-check-label" for="secondShift">2nd</label>
+                        </div>
+                    </div>
+                    <div class="">
+                        <label for="instructorImage">Image :</label>
+                        <input class="form-control" type="file" name="instructorImage" id="instructorImage" >
+                    </div>
+                    <div>
+                        <button class="btn btn-primary instructor-submit-btn py-4 my-4" type="submit">Insert</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    
+{% endblock %}

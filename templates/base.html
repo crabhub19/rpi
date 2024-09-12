@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/notice.css' %}">
+    <title>{% block title %}{% endblock title %}</title>
+</head>
+<body>
+    <section class="primary mt-0" id="nav">
+        {% for message in messages %}
+                {% if message.tags == "success" %}
+                <div class="row mb-0">
+                    <div class="col">
+                        <div class="alert alert-success alert-dissmissible fade show" role="alert">
+                            <strong>Message : </strong>{{message}}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% if message.tags == "error" %}
+                <div class="row">
+                    <div class="col">
+                        <div class="alert alert-danger alert-dissmissible fade show" role="alert">
+                            <strong>Message : </strong>{{message}}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        <nav class="navbar navbar-expand-lg navbar-dark mx-5">
+            <a class="navbar-brand" href="#">Xlorex</a>
+
+            <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse nav-justified justify-content-around" id="navbarCollapse">
+            <ul class="navbar-nav mb-2 mb-md-0">
+                <li class="nav-item">
+                <a class="nav-link btn btn-outline-secondary" href="{% url 'index' %}" target="">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link btn btn-outline-secondary" href="{% url 'notice' %}" target="">Notice</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary" href="{% url 'signup' %}">Create Admin</a>
+                    </li>
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                <a class="nav-link btn btn-outline-secondary" href="{% url 'user_logout' %}">Logout</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-bs-toggle="dropdown" aria-expanded="false">Insert</a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdown05">
+                        <li><a class="dropdown-item" href="{% url 'add_instructor' %}" target="">Add Instructor</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add_student' %}" target="">Add Student</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add_instrument' %}" target="">Add Instrument</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add_department' %}">Add Department</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add_notice' %}">Add Notice</a></li>
+                    </ul>
+                  </li>
+                {% else %}
+                <li class="nav-item">
+                <a class="nav-link btn btn-outline-secondary" href="{% url 'user_login' %}">Log In</a>
+                </li>
+                {% endif %}
+            </ul>
+            </div>
+            
+        </nav>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="">
+                    <audio loop hidden id="audio">
+                        <source src="{% static 'audio/egale.mp3' %}" type="audio/mpeg">
+                        your browser does not audio
+                    </audio>
+                </div>
+                <form class="search-form col mx-auto row py-2 justify-content-center" action="{% url 'search' %}" method="get">
+                    <a class="btn btn-secondary col-2 m-0" onclick="toggleAudio('audio')">MUSIC</a>
+                    <input name="q" class=" col-8  m-0" type="text" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-primary navbar-search-icon col-2 m-0" type="submit">SEARCH</button>
+                </form>
+            </div>
+        </div>
+</section>
+
+
+
+
+
+
+{% block body %}{% endblock body %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="footer" class="primary">
+    <hr class="line">
+    <div class="section-head text-center">
+        <h1>Creator Bio</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 creator pt-5">
+                <div class="">
+                    <div class="img-fluid">
+                        <img class="" src="{% static 'builtin_picture/20220517_213137.jpg' %}" alt="" srcset="">
+                    </div>
+                        <h3 class="text-primary my-0">Maksud Hasan Bishal</h3>
+                        <h5 class="text-muted">Software Engneer</h5>
+                        <i class="text-warning">My user name is crab. I am a fullstack Developer.<br> If you need any kind of project, contract with me : 01703055918 </i>
+                        <blockquote class="text-center">Xlorex all right reserve</blockquote>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+<script>
+    function toggleAudio(id) {
+        const audio = document.getElementById(id);
+        if (audio.paused){
+            audio.play();
+        }else{
+            audio.pause();
+        }
+    }
+</script>
+</body>
+</html>

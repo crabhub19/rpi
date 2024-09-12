@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+
+{% block body %}
+    <section id="login" class="secondary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Login</h1>
+        </div>
+		<div class="container login">
+			<div class="row">
+				<div class="col">
+					<div class="box mx-auto">
+						<form class="" autocomplete="off" action="user_login" method="post">
+							{% csrf_token %}
+							<h2>Admin Authentication Cheak</h2>
+							<div class="inputBox">
+								<input type="text" required="required" name="username">
+								<span>Userame</span>
+								<i></i>
+							</div>
+							<div class="inputBox">
+								<input type="password" required="required" name="password">
+								<span>Password</span>
+								<i></i>
+							</div>
+							<input type="submit" value="Login">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock body %}

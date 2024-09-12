@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+
+{% block body %}
+
+
+
+    <section id="instructor" class="primary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Chief Instructor|{{dept}}</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for i in instructor %}
+                {% if i.department.name == dept and i.rank == "chifInstructor" %}
+                <div class="col-lg-4 col-md-6 p-4 mx-auto">
+                    <div class="instructor-content pb-3">
+                        <div class="image-container row justify-content-center p-5 pb-3">
+                            <div class="image col-12 p-0">
+                                <img class="instructorImage" src="{{i.instructorImage.url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="instructor-info px-5">
+                            <h3>{{i.name}}</h3>
+                            <h5 class="text-warning">{{i.email}}</h5>
+                            {% if i.tag %}<b class="text-danger">{{i.tag}} \</b>{% endif %}
+                            {% if i.address %}<b class="text-danger">{{i.address}} \</b>{% endif %}
+                            {% if i.gender %}<b class="text-danger">{{i.gender}} \</b>{% endif %}
+                            {% if i.firstShift %}<b class="text-danger">1st Shift \</b>{% endif %}
+                            {% if i.secondShift %}<b class="text-danger">2st Shift \</b>{% endif %}<br>
+                            {% if i.description %}<i>{{i.description}}</i>{% endif %}
+                            {% if user.is_authenticated %}
+                            <p class="row justify-content-center">
+                                <a class="col mx-auto btn btn-danger" href="{% url 'delete_instructor' i.id %}"><b class="text-center" >Delete</b></a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="instructor" class="secondary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Instructor|{{dept}}</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for i in instructor %}
+                {% if i.department.name == dept and i.rank == "instructor" %}
+                <div class="col-lg-4 col-md-6 p-4">
+                    <div class="instructor-content pb-3">
+                        <div class="image-container row justify-content-center p-5 pb-3">
+                            <div class="image col-12 p-0">
+                                <img class="instructorImage" src="{{i.instructorImage.url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="instructor-info px-5">
+                            <h3>{{i.name}}</h3>
+                            <h5 class="text-warning">{{i.email}}</h5>
+                            {% if i.tag %}<b class="text-danger">{{i.tag}} \</b>{% endif %}
+                            {% if i.address %}<b class="text-danger">{{i.address}} \</b>{% endif %}
+                            {% if i.gender %}<b class="text-danger">{{i.gender}} \</b>{% endif %}
+                            {% if i.firstShift %}<b class="text-danger">1st Shift \</b>{% endif %}
+                            {% if i.secondShift %}<b class="text-danger">2st Shift \</b>{% endif %}<br>
+                            {% if i.description %}<i>{{i.description}}</i>{% endif %}
+                            {% if user.is_authenticated %}
+                            <p class="row justify-content-center">
+                                <a class="col mx-auto btn btn-danger" href="{% url 'delete_instructor' i.id %}"><b class="text-center" >Delete</b></a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="instructor" class="primary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Junior Instractor|{{dept}}</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for i in instructor %}
+                {% if i.department.name == dept and i.rank == "juniorInstractor" %}
+                <div class="col-lg-4 col-md-6 p-4">
+                    <div class="instructor-content pb-3">
+                        <div class="image-container row justify-content-center p-5 pb-3">
+                            <div class="image col-12 p-0">
+                                <img class="instructorImage" src="{{i.instructorImage.url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="instructor-info px-5">
+                            <h3>{{i.name}}</h3>
+                            <h5 class="text-warning">{{i.email}}</h5>
+                            {% if i.tag %}<b class="text-danger">{{i.tag}} \</b>{% endif %}
+                            {% if i.address %}<b class="text-danger">{{i.address}} \</b>{% endif %}
+                            {% if i.gender %}<b class="text-danger">{{i.gender}} \</b>{% endif %}
+                            {% if i.firstShift %}<b class="text-danger">1st Shift \</b>{% endif %}
+                            {% if i.secondShift %}<b class="text-danger">2st Shift \</b>{% endif %}<br>
+                            {% if i.description %}<i>{{i.description}}</i>{% endif %}
+                            {% if user.is_authenticated %}
+                            <p class="row justify-content-center">
+                                <a class="col mx-auto btn btn-danger" href="{% url 'delete_instructor' i.id %}"><b class="text-center" >Delete</b></a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="instructor" class="secondary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Assistant Instructor|{{dept}}</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for i in instructor %}
+                {% if i.department.name == dept and i.rank == "assistantInstructor" %}
+                <div class="col-lg-4 col-md-6 p-4">
+                    <div class="instructor-content pb-3">
+                        <div class="image-container row justify-content-center p-5 pb-3">
+                            <div class="image col-12 p-0">
+                                <img class="instructorImage" src="{{i.instructorImage.url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="instructor-info px-5">
+                            <h3>{{i.name}}</h3>
+                            <h5 class="text-warning">{{i.email}}</h5>
+                            {% if i.tag %}<b class="text-danger">{{i.tag}} \</b>{% endif %}
+                            {% if i.address %}<b class="text-danger">{{i.address}} \</b>{% endif %}
+                            {% if i.gender %}<b class="text-danger">{{i.gender}} \</b>{% endif %}
+                            {% if i.firstShift %}<b class="text-danger">1st Shift \</b>{% endif %}
+                            {% if i.secondShift %}<b class="text-danger">2st Shift \</b>{% endif %}<br>
+                            {% if i.description %}<i>{{i.description}}</i>{% endif %}
+                            {% if user.is_authenticated %}
+                            <p class="row justify-content-center">
+                                <a class="col mx-auto btn btn-danger" href="{% url 'delete_instructor' i.id %}"><b class="text-center" >Delete</b></a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="instructor" class="primary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Guest Instructor|{{dept}}</h1>
+        </div>
+        <div class="container">
+            <div class="row">
+                {% for i in instructor %}
+                {% if i.department.name == dept and i.rank == "guestInstructor" %}
+                <div class="col-lg-4 col-md-6 p-4">
+                    <div class="instructor-content pb-3">
+                        <div class="image-container row justify-content-center p-5 pb-3">
+                            <div class="image col-12 p-0">
+                                <img class="instructorImage" src="{{i.instructorImage.url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="instructor-info px-5">
+                            <h3>{{i.name}}</h3>
+                            <h5 class="text-warning">{{i.email}}</h5>
+                            {% if i.tag %}<b class="text-danger">{{i.tag}} \</b>{% endif %}
+                            {% if i.address %}<b class="text-danger">{{i.address}} \</b>{% endif %}
+                            {% if i.gender %}<b class="text-danger">{{i.gender}} \</b>{% endif %}
+                            {% if i.firstShift %}<b class="text-danger">1st Shift \</b>{% endif %}
+                            {% if i.secondShift %}<b class="text-danger">2st Shift \</b>{% endif %}<br>
+                            {% if i.description %}<i>{{i.description}}</i>{% endif %}
+                            {% if user.is_authenticated %}
+                            <p class="row justify-content-center">
+                                <a class="col mx-auto btn btn-danger" href="{% url 'delete_instructor' i.id %}"><b class="text-center" >Delete</b></a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% empty %}
+                <h1>No Items Available</h1>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </section>
+    
+
+
+{% endblock %}

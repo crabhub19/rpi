@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+
+{% block body %}
+    <section id="signup" class="primary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Admin Login</h1>
+        </div>
+		<div class="container signup">
+			<div class="row">
+				<div class="col">
+					<div class="box mx-auto">
+						<form class="" autocomplete="off" action="signup" method="post">
+							{% csrf_token %}
+							<h2>Create Admin</h2>
+							<div class="inputBox">
+								<input type="text" name="username" required="required">
+								<span>Userame</span>
+								<i></i>
+							</div>
+							<div class="inputBox">
+								<input type="password" name="password" required="required">
+								<span>Password</span>
+								<i></i>
+							</div>
+							<div class="inputBox">
+								<input type="password" name="confirmPassword" required="required">
+								<span>Confirm Password</span>
+								<i></i>
+							</div>
+							<input type="submit" value="Create">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock body %}

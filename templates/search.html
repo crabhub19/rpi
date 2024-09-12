@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+
+{% block body %}
+    
+    <section id="search" class="secondary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>{{query}}</h1>
+        </div>
+        <div class="container">
+            <div class="row"> 
+                {% for i in student %}
+                <div class="col-lg-4 col-md-6 p-4 mx-auto">
+                    <div class="student-content pb-3">
+                        <div class="image-container row justify-content-center m-0">
+                            <div class="image col-12 p-0 m-0">
+                                <img src="{{i.studentImage.url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="student-info px-5">
+                            <h3>{{i.name}}</h3>
+                            <h5 class="text-warning">{{i.roll}}</h5>
+                            <h6 class="text-muted">{{i.email}}</h6>
+                            <b class="text-danger">{{i.department.name}} \</b>
+                            {% if i.went %}<b class="text-danger">{{i.went}} \</b>{% endif %}
+                            {% if i.address %}<b class="text-danger">{{i.address}} \</b>{% endif %}
+                            {% if i.gender %}<b class="text-danger">{{i.gender}} \</b>{% endif %}
+                            {% if i.firstShift %}<b class="text-danger">1st Shift \</b>{% endif %}
+                            {% if i.secondShift %}<b class="text-danger">2st Shift \</b>{% endif %}<br>
+                            {% if i.description %}<i>{{i.description}}</i>{% endif %}
+                            <p class="row justify-content-center">
+                                <a class="col mx-auto btn btn-danger" href="{% url 'delete_student' i.id %}"><b class="text-center" >Delete</b></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% for i in instructor %}
+                <div class="col-lg-4 col-md-6 p-4 mx-auto">
+                    <div class="student-content pb-3">
+                        <div class="image-container row justify-content-center m-0">
+                            <div class="image col-12 p-0 m-0">
+                                <img src="{{i.instructorImage.url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="student-info px-5">
+                            <h3>{{i.name}}</h3>
+                            <h5 class="text-warning">{{i.rank}}</h5>
+                            <h6 class="text-muted">{{i.email}}</h6>
+                            <b class="text-danger">{{i.department.name}} \</b>
+                            {% if i.tag %}<b class="text-danger">{{i.went}} \</b>{% endif %}
+                            {% if i.address %}<b class="text-danger">{{i.address}} \</b>{% endif %}
+                            {% if i.gender %}<b class="text-danger">{{i.gender}} \</b>{% endif %}
+                            {% if i.firstShift %}<b class="text-danger">1st Shift \</b>{% endif %}
+                            {% if i.secondShift %}<b class="text-danger">2st Shift \</b>{% endif %}<br>
+                            {% if i.description %}<i>{{i.description}}</i>{% endif %}
+                            <p class="row justify-content-center">
+                                <a class="col mx-auto btn btn-danger" href="{% url 'delete_instructor' i.id %}"><b class="text-center" >Delete</b></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% for i in instrument %}
+                <div class="col-lg-4 col-md-6 p-4 mx-auto">
+                    <div class="student-content pb-3">
+                        <div class="image-container row justify-content-center m-0">
+                            <div class="image col-12 p-0 m-0">
+                                <img src="{{i.instrumentImage.url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="student-info px-5">
+                            <h3>{{i.name}}</h3>
+                            <h5 class="text-warning">{{i.closet}}</h5>
+                            <h6 class="text-muted">{{i.rack}}</h6>
+                            <b class="text-danger">{{i.department.name}} </b>
+
+                            <p class="row justify-content-center">
+                                <a class="col mx-auto btn btn-danger" href="{% url 'delete_instrument' i.id %}"><b class="text-center" >Delete</b></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}

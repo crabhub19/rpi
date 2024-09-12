@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+
+{% block body %}
+
+    <section>
+        <div class="container">
+          {% for n in notice %}
+            <div class="row justify-content-center">
+                <div class="col-lg-8 p-0 newsfeed my-3 ms-3 ">
+                    <div class="row newsfeed-header m-auto">
+                        <div class="col-10 m-auto">
+                            <h4 class="p-2 newsfeed-name">{{n.heading}}</h4>
+                        </div>
+                        <div class="col-2 row align-items-end mt-2">
+                          <p class="text-center newsfeed-date text-danger" >{{n.created_at}}</p>
+                        </div>
+                    </div>
+                    {% if n.noticeImage %}
+                    <div class="row">
+                      <div class="col newsfeed-img">
+                        <img class="" src="{{n.noticeImage.url}}" alt="" srcset="">
+                      </div>
+                    </div>
+                    {% endif %}
+                  <div class="row caption p-2">
+                    <div class="col">
+                      <i>{{n.details}}</i>
+                    </div>
+                  </div>
+                  {% if user.is_authenticated %}
+                  <div class="row">
+                    <div class="col like-container">
+                      <a href="{% url 'delete_notice' n.id %}" class="btn btn-danger like-btn"> Delete</a>
+                    </div>
+                  </div>
+                  {% endif %}
+                </div>
+            </div>
+          {% endfor %}
+        </div>
+    </section>
+
+  {% endblock body %}

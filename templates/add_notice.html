@@ -1,0 +1,43 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+
+{% block body %}
+    <section id="add-notice" class="secondary pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Publish Notice</h1>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-8">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="">
+                            <label class="text-danger" for="heading">Heading :</label>
+                            <input class="form-control text-danger border border-1 border-danger" required type="text" name="heading" id="heading">
+                        </div>
+                        <div>
+                            <label class="text-info" for="details">Details :</label>
+                            <textarea class="form-control border border-1 border-primary" name="details" id="details" cols="100%" rows="10" required></textarea>
+                        </div>
+                        <div>
+                            <label for="noticeImage"></label>
+                            <input class="form-control border border-1 border-dark" type="file" name="noticeImage" id="noticeImage">
+                        </div>
+                        <div class="mt-3">
+                            <button type="submit" class="btn btn-primary instrument-btn" href="">Publish</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+{% endblock body %}

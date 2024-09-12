@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+
+{% block body %}
+    
+    <section id="student" class="primary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Class Representative | {{dept}}</h1>
+        </div>
+        <div class="container">
+            <div class="row"> 
+                {% for i in student %}
+                {% if i.department.name == dept and i.cr %}
+                <div class="col-lg-4 col-md-6 p-4 mx-auto">
+                    <div class="student-content pb-3">
+                        <div class="image-container row justify-content-center m-0">
+                            <div class="image col-12 p-0 m-0">
+                                <img src="{{i.studentImage.url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="student-info px-5">
+                            <h3>{{i.name}}</h3>
+                            <h5 class="text-warning">{{i.roll}}</h5>
+                            <h6 class="text-muted">{{i.email}}</h6>
+                            {% if i.went %}<b class="text-danger">{{i.went}} \</b>{% endif %}
+                            {% if i.address %}<b class="text-danger">{{i.address}} \</b>{% endif %}
+                            {% if i.gender %}<b class="text-danger">{{i.gender}} \</b>{% endif %}
+                            {% if i.firstShift %}<b class="text-danger">1st Shift \</b>{% endif %}
+                            {% if i.secondShift %}<b class="text-danger">2st Shift \</b>{% endif %}<br>
+                            {% if i.description %}<i>{{i.description}}</i>{% endif %}
+                            {% if user.is_authenticated %}
+                            <p class="row justify-content-center">
+                                <a class="col mx-auto btn btn-danger" href="{% url 'delete_student' i.id %}"><b class="text-center" >Delete</b></a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="student" class="secondary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>Students | {{dept}}</h1>
+        </div>
+        <div class="container">
+            <div class="row"> 
+                {% for i in student %}
+                {% if i.department.name == dept and not i.cr %}
+                <div class="col-lg-4 col-md-6 p-4">
+                    <div class="student-content pb-3">
+                        <div class="image-container row justify-content-center m-0">
+                            <div class="image col-12 p-0 m-0">
+                                <img src="{{i.studentImage.url}}" alt="" srcset="">
+                            </div>
+                        </div>
+                        <div class="student-info px-5">
+                            <h3>{{i.name}}</h3>
+                            <h5 class="text-warning">{{i.roll}}</h5>
+                            <h6 class="text-mute">{{i.email}}</h6>
+                            {% if i.went %}<b class="text-danger">{{i.went}} \</b>{% endif %}
+                            {% if i.address %}<b class="text-danger">{{i.address}} \</b>{% endif %}
+                            {% if i.gender %}<b class="text-danger">{{i.gender}} \</b>{% endif %}
+                            {% if i.firstShift %}<b class="text-danger">1st Shift \</b>{% endif %}
+                            {% if i.secondShift %}<b class="text-danger">2st Shift \</b>{% endif %}<br>
+                            {% if i.description %}<i>{{i.description}}</i>{% endif %}
+                            {% if user.is_authenticated %}
+                            <p class="row justify-content-center">
+                                <a class="col mx-auto btn btn-danger" href="{% url 'delete_student' i.id %}"><b class="text-center" >Delete</b></a>
+                            </p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+
+{% endblock %}

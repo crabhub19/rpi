@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+
+
+{% block body %}
+    <section id="instrument" class="secondary p-5 pt-1">
+        <hr class="line">
+        <div class="section-head text-center">
+            <h1>instrument | {{dept}}</h1>
+        </div>
+        <div class="container table-responsive">
+            <table class="instrument-table table table-striped table-borderless table-hover">
+                <thead>
+                    <tr>
+                        <th>SN</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Closet</th>
+                        <th>Rack</th>
+                        {% if user.is_authenticated %}
+                        <th>Delete</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for i in instrument %}
+                    {% if i.department.name == dept %}
+                    <tr>
+                        <td>{{i.name}}</td>
+                        <td>                           
+                            <div class="image m-0 p-0">
+                                <img src="{{i.instrumentImage.url}}" alt="" srcset="">
+                            </div>
+                        </td>
+                        <td>{{i.name}}</td>
+                        <td>{{i.closet}}</td>
+                        <td>{{i.rack}}</td>
+                        {% if user.is_authenticated %}
+                        <td>                           
+                            <div class="image m-0 p-0">
+                                <a href="{% url 'delete_instrument' i.id %}"><img src="{% static 'builtin_picture/delete.png' %}" alt="" srcset=""></a>
+                            </div>
+                        </td>
+                        {% endif %}
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    
+{% endblock %}
